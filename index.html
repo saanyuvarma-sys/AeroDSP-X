@@ -1,526 +1,72 @@
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#07111f">
-
-    <title>AeroDSP-X | Aerospace DSP Engineering</title>
-
-    <meta name="description"
-        content="AeroDSP-X is a Verilog RTL research project exploring fixed-point FIR filtering and vibration event detection.">
-
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<header class="navbar">
-    <a href="#home" class="logo">
-        <span class="logo-mark">A</span>
-        AeroDSP<span class="cyan">-X</span>
-    </a>
-
-    <nav>
-        <a href="#overview">Overview</a>
-        <a href="#architecture">Architecture</a>
-        <a href="#technology">Technology</a>
-        <a href="#verification">Verification</a>
-        <a href="#evidence">Evidence</a>
-        <a href="#research">Research</a>
-    </nav>
-
-    <a class="nav-button"
-       href="https://github.com/saanyuvarma-sys/AeroDSP-X"
-       target="_blank" rel="noopener">
-       GitHub ↗
-    </a>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#050b16">
+<meta name="description" content="AeroDSP-X — fixed-point DSP RTL for aerospace sensor signal conditioning and vibration event detection.">
+<title>AeroDSP-X | Flight Systems Signal Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css">
+</head><body>
+<div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="noise"></div>
+<header class="topbar">
+<a class="brand" href="#home"><span class="brand-mark"><svg viewBox="0 0 40 40"><path d="M20 4 36 34H4L20 4Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M20 13v17" stroke="currentColor" stroke-width="1.5"/></svg></span><span>AERO<span class="brand-accent">DSP</span><i> / X</i></span></a>
+<nav class="nav-links" id="navLinks"><a href="#mission">Mission</a><a href="#system">System</a><a href="#signal-lab">Signal lab</a><a href="#verification">Verification</a><a href="#evidence">Evidence</a></nav>
+<a class="top-cta" href="https://github.com/saanyuvarma-sys/AeroDSP-X" target="_blank" rel="noopener">SOURCE CODE <span>↗</span></a>
+<button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span></button>
 </header>
-
 <main>
-
-<!-- HERO -->
-
-<section class="hero" id="home">
-
-    <div class="hero-content">
-
-        <div class="eyebrow">
-            <span class="status-dot"></span>
-            DIGITAL DESIGN · DSP · RTL ENGINEERING
-        </div>
-
-        <h1>
-            Engineering<br>
-            <span class="gradient-text">Intelligent Signal</span><br>
-            Processing.
-        </h1>
-
-        <p class="hero-description">
-            AeroDSP-X is a fixed-point digital signal processing
-            subsystem exploring sensor signal conditioning,
-            FIR filtering and vibration event detection using Verilog RTL.
-        </p>
-
-        <div class="hero-buttons">
-            <a href="#architecture" class="primary-button">
-                Explore Architecture →
-            </a>
-
-            <a href="https://github.com/saanyuvarma-sys/AeroDSP-X"
-               target="_blank" rel="noopener"
-               class="secondary-button">
-                View Source Code ↗
-            </a>
-        </div>
-
-        <div class="hero-tags">
-            <span>Verilog HDL</span>
-            <span>Fixed-Point DSP</span>
-            <span>FIR Filter</span>
-            <span>Functional Verification</span>
-        </div>
-
-    </div>
-
-    <div class="hero-visual">
-
-        <div class="orbit orbit-one"></div>
-        <div class="orbit orbit-two"></div>
-
-        <div class="core-card">
-            <div class="core-label">AERODSP-X / CORE</div>
-
-            <svg viewBox="0 0 400 180"
-                 class="signal-graphic"
-                 role="img"
-                 aria-label="Illustrative signal waveform">
-
-                <defs>
-                    <linearGradient id="signalGradient">
-                        <stop offset="0%" stop-color="#37d6f5"/>
-                        <stop offset="100%" stop-color="#8a7cff"/>
-                    </linearGradient>
-                </defs>
-
-                <path d="M0 90 L35 90 L50 25 L70 145
-                         L90 90 L130 90 L150 45 L170 125
-                         L190 90 L230 90 L250 55 L270 110
-                         L290 90 L330 90 L350 65 L370 90
-                         L400 90"
-                      fill="none"
-                      stroke="url(#signalGradient)"
-                      stroke-width="3"
-                      stroke-linecap="round"/>
-
-                <path d="M0 90 L400 90"
-                      stroke="#ffffff"
-                      opacity="0.12"
-                      stroke-dasharray="5 8"/>
-            </svg>
-
-            <div class="core-footer">
-                <span>DSP PROCESSING UNIT</span>
-                <span class="live-indicator">● SYSTEM MODEL</span>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="scroll-indicator">SCROLL TO EXPLORE ↓</div>
-
-</section>
-
-
-<!-- OVERVIEW -->
-
-<section class="section" id="overview">
-
-    <div class="section-heading">
-        <span class="section-number">01 / OVERVIEW</span>
-        <h2>Inside the <span class="cyan">Project</span></h2>
-        <p>
-            A digital hardware research project focused on
-            signal filtering and vibration monitoring.
-        </p>
-    </div>
-
-    <div class="overview-grid">
-
-        <article class="info-card">
-            <span class="card-icon">◈</span>
-            <h3>Signal Conditioning</h3>
-            <p>
-                An 8-tap symmetric FIR filter processes incoming
-                digital samples using fixed-point coefficients.
-            </p>
-        </article>
-
-        <article class="info-card">
-            <span class="card-icon">⌁</span>
-            <h3>Vibration Monitoring</h3>
-            <p>
-                Signal magnitude is evaluated using programmable
-                threshold and hysteresis conditions.
-            </p>
-        </article>
-
-        <article class="info-card">
-            <span class="card-icon">⌘</span>
-            <h3>RTL Verification</h3>
-            <p>
-                Simulation-based testing evaluates FIR behaviour
-                and vibration alarm operation.
-            </p>
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- ARCHITECTURE -->
-
-<section class="section architecture-section" id="architecture">
-
-    <div class="section-heading">
-        <span class="section-number">02 / SYSTEM DESIGN</span>
-        <h2>System <span class="cyan">Architecture</span></h2>
-        <p>
-            Functional processing flow of the AeroDSP-X subsystem.
-        </p>
-    </div>
-
-    <div class="architecture-panel">
-
-        <div class="architecture-flow">
-
-            <div class="architecture-node">
-                <span class="node-number">01</span>
-                <div class="node-icon">⌁</div>
-                <h3>Sensor Input</h3>
-                <p>Digital sample input</p>
-            </div>
-
-            <div class="flow-arrow">→</div>
-
-            <div class="architecture-node highlight-node">
-                <span class="node-number">02</span>
-                <div class="node-icon">∑</div>
-                <h3>8-Tap FIR</h3>
-                <p>Fixed-point filtering</p>
-            </div>
-
-            <div class="flow-arrow">→</div>
-
-            <div class="architecture-node">
-                <span class="node-number">03</span>
-                <div class="node-icon">◉</div>
-                <h3>Vibration Monitor</h3>
-                <p>Threshold evaluation</p>
-            </div>
-
-            <div class="flow-arrow">→</div>
-
-            <div class="architecture-node">
-                <span class="node-number">04</span>
-                <div class="node-icon">⚑</div>
-                <h3>Alarm Output</h3>
-                <p>Event indication</p>
-            </div>
-
-        </div>
-
-        <div class="architecture-caption">
-            <span class="status-dot"></span>
-            FUNCTIONAL BLOCK REPRESENTATION
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- TECHNOLOGY -->
-
-<section class="section" id="technology">
-
-    <div class="section-heading">
-        <span class="section-number">03 / ENGINEERING</span>
-        <h2>Technical <span class="cyan">Foundation</span></h2>
-        <p>
-            Digital design concepts explored in the implementation.
-        </p>
-    </div>
-
-    <div class="technical-grid">
-
-        <article class="technical-card">
-            <span class="technical-index">01</span>
-            <h3>FIR Digital Filter</h3>
-            <p>
-                An 8-tap symmetric FIR filter with signed
-                sample processing and fixed-point coefficients.
-            </p>
-            <div class="formula">
-                y[n] = Σ h[k] x[n-k]
-            </div>
-        </article>
-
-        <article class="technical-card">
-            <span class="technical-index">02</span>
-            <h3>Fixed-Point Arithmetic</h3>
-            <p>
-                Q1.15 coefficient representation is used
-                for hardware-oriented numerical processing.
-            </p>
-            <div class="formula">
-                Q1.15 · 16-bit coefficients
-            </div>
-        </article>
-
-        <article class="technical-card">
-            <span class="technical-index">03</span>
-            <h3>Vibration Detection</h3>
-            <p>
-                Absolute magnitude, programmable thresholds,
-                hysteresis and consecutive-sample event logic.
-            </p>
-            <div class="formula">
-                High samples → Alarm
-            </div>
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- VERIFICATION -->
-
-<section class="section verification-section" id="verification">
-
-    <div class="section-heading">
-        <span class="section-number">04 / VALIDATION</span>
-        <h2>Verification <span class="cyan">Results</span></h2>
-        <p>
-            Recorded results from the FIR functional testbench.
-        </p>
-    </div>
-
-    <div class="metrics-grid">
-
-        <div class="metric-card">
-            <span class="metric-value">172</span>
-            <span class="metric-label">TOTAL FIR TESTS</span>
-        </div>
-
-        <div class="metric-card">
-            <span class="metric-value cyan">172</span>
-            <span class="metric-label">PASSED TESTS</span>
-        </div>
-
-        <div class="metric-card">
-            <span class="metric-value">00</span>
-            <span class="metric-label">FAILED TESTS</span>
-        </div>
-
-        <div class="metric-card">
-            <span class="metric-value">100%</span>
-            <span class="metric-label">FIR TEST PASS RATE</span>
-        </div>
-
-    </div>
-
-    <div class="verification-note">
-        <span class="status-dot"></span>
-        <div>
-            <strong>FIR functional verification completed</strong>
-            <p>
-                Recorded testbench result: 172 passed and 0 failed.
-                This is a simulation result, not hardware qualification.
-            </p>
-        </div>
-    </div>
-
-</section>
-
-
-<!-- REAL SIMULATION EVIDENCE -->
-
-<section class="section evidence-section" id="evidence">
-
-    <div class="section-heading">
-        <span class="section-number">05 / SIMULATION EVIDENCE</span>
-        <h2>Inside the <span class="cyan">Simulation</span></h2>
-        <p>
-            Actual EPWave waveform captures from the AeroDSP-X
-            functional simulation environment.
-        </p>
-    </div>
-
-    <div class="evidence-card">
-
-        <div class="evidence-top">
-            <span class="evidence-label">
-                AERODSP-X / EPWAVE CAPTURE
-            </span>
-            <span class="live-indicator">● REAL PROJECT EVIDENCE</span>
-        </div>
-
-        <img
-            src="aerodsp_simulation_evidence.png"
-            alt="Combined original EPWave screenshots showing AeroDSP-X FIR and vibration monitor simulation signals"
-            loading="lazy"
-        >
-
-        <div class="evidence-caption">
-            <span class="status-dot"></span>
-
-            <div>
-                <strong>FIR Filtering & Vibration Monitoring</strong>
-
-                <p>
-                    The waveform captures show signals including
-                    filtered output, input validation, accumulator,
-                    sample input, threshold, hysteresis, monitor
-                    validation and alarm behaviour.
-                </p>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="evidence-note">
-        The displayed waveform is original simulation evidence.
-        The illustrative waveform in the homepage hero is a
-        design graphic and is not measured project data.
-    </div>
-
-</section>
-
-
-<!-- RESEARCH -->
-
-<section class="section research-section" id="research">
-
-    <div class="section-heading">
-        <span class="section-number">06 / RESEARCH DOCUMENTATION</span>
-        <h2>Research & <span class="cyan">Innovation</span></h2>
-        <p>
-            Technical documentation and investigation of possible
-            engineering contributions.
-        </p>
-    </div>
-
-    <div class="research-panel">
-
-        <div class="research-label">
-            TECHNICAL RESEARCH DOSSIER
-        </div>
-
-        <h3>
-            Design and Functional Verification of a Fixed-Point
-            DSP RTL Subsystem for Aerospace Sensor Signal
-            Conditioning and Vibration Event Detection
-        </h3>
-
-        <p>
-            This project investigates the RTL implementation of
-            a digital signal processing subsystem combining
-            FIR filtering with vibration event monitoring.
-        </p>
-
-        <div class="research-divider"></div>
-
-        <div class="research-details">
-
-            <div>
-                <span>DOMAIN</span>
-                <strong>Digital Signal Processing</strong>
-            </div>
-
-            <div>
-                <span>IMPLEMENTATION</span>
-                <strong>Verilog RTL</strong>
-            </div>
-
-            <div>
-                <span>DOCUMENTATION</span>
-                <strong>Technical Research Draft</strong>
-            </div>
-
-        </div>
-
-        <p class="research-warning">
-            Patent investigation is ongoing. This project page
-            is technical documentation, not a patent application
-            or evidence of granted patent rights.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- ABOUT -->
-
-<section class="section about-section">
-
-    <div class="about-content">
-
-        <span class="section-number">07 / PROJECT INFORMATION</span>
-
-        <h2>Built through <span class="cyan">Engineering</span></h2>
-
-        <p>
-            AeroDSP-X is an independent academic engineering
-            project exploring digital hardware design,
-            fixed-point arithmetic, signal processing
-            and functional verification.
-        </p>
-
-        <p>
-            The aerospace sensor context represents a potential
-            application area. The current implementation is an
-            educational RTL prototype and has not been certified
-            for aerospace deployment.
-        </p>
-
-        <a href="https://github.com/saanyuvarma-sys/AeroDSP-X"
-           target="_blank" rel="noopener"
-           class="primary-button">
-            Explore GitHub Repository ↗
-        </a>
-
-    </div>
-
-</section>
-
+<section class="hero" id="home"><div class="hero-grid"></div>
+<div class="hero-copy reveal"><div class="eyebrow"><span class="pulse"></span> INDEPENDENT RTL ENGINEERING PROJECT <span class="eyebrow-line"></span> 2026</div>
+<h1>Signal intelligence<br>for the <em>edge of flight.</em></h1>
+<p class="hero-lede">A fixed-point DSP subsystem exploring how sensor signals can be conditioned, filtered and monitored through Verilog RTL.</p>
+<div class="hero-actions"><a class="button button-primary" href="#system">EXPLORE THE SYSTEM <span>↘</span></a><a class="text-link" href="#evidence">VIEW REAL SIMULATION EVIDENCE ↗</a></div>
+<div class="hero-meta"><span><b>01</b> DIGITAL SIGNAL PROCESSING</span><span><b>02</b> VERILOG RTL</span><span><b>03</b> FUNCTIONAL VERIFICATION</span></div></div>
+<div class="hero-art reveal"><div class="art-topline"><span>FIG. 01 / SENSOR SYSTEM CONCEPT</span><span>NOT TO SCALE</span></div>
+<div class="radar"><div class="radar-ring ring-1"></div><div class="radar-ring ring-2"></div><div class="radar-ring ring-3"></div><div class="radar-cross cross-x"></div><div class="radar-cross cross-y"></div><div class="radar-sweep"></div><span class="radar-point point-a"></span><span class="radar-point point-b"></span><span class="radar-point point-c"></span>
+<svg class="craft" viewBox="0 0 500 300" role="img" aria-label="Stylized research aircraft sensor concept"><defs><linearGradient id="planeGlow" x1="0" x2="1"><stop stop-color="#e5fbff"/><stop offset="1" stop-color="#58cbe8"/></linearGradient></defs><path d="M250 24 265 110 438 190 438 207 270 169 265 236 310 267 310 279 250 260 190 279 190 267 235 236 230 169 62 207 62 190 235 110Z" fill="url(#planeGlow)" fill-opacity=".13" stroke="url(#planeGlow)" stroke-width="2"/><path d="M250 24 250 260M235 110 265 110M235 169 265 169" stroke="#75e5fa" stroke-opacity=".7"/><circle cx="250" cy="144" r="7" fill="#66e3fa"/><path d="M250 151v57" stroke="#66e3fa" stroke-dasharray="3 6"/></svg>
+<div class="radar-label label-top">AIRFRAME SENSOR ARRAY</div><div class="radar-label label-right">VIBRATION / MONITOR</div><div class="radar-label label-bottom">TELEMETRY FIELD</div></div>
+<div class="art-bottomline"><span><i class="tiny-dot"></i> CONCEPTUAL APPLICATION VISUAL</span><span>AD-X / 001</span></div></div>
+<div class="hero-index"><span>SCROLL TO EXPLORE</span><span class="index-line"></span><span>00 — 07</span></div></section>
+<section class="ticker"><div class="ticker-track"><span>FIXED-POINT DSP</span><b>✳</b><span>FIR FILTERING</span><b>✳</b><span>VIBRATION EVENT DETECTION</span><b>✳</b><span>RTL VERIFICATION</span><b>✳</b><span>FIXED-POINT DSP</span><b>✳</b><span>FIR FILTERING</span><b>✳</b><span>VIBRATION EVENT DETECTION</span><b>✳</b><span>RTL VERIFICATION</span><b>✳</b></div></section>
+<section class="section mission-section" id="mission"><div class="section-kicker reveal"><span>01 / PROJECT BRIEF</span><span class="kicker-rule"></span><span>THE MISSION</span></div>
+<div class="mission-layout"><div class="section-title reveal"><h2>From raw samples<br>to <em>meaningful signals.</em></h2></div><div class="mission-copy reveal"><p class="large-copy">AeroDSP-X brings together a symmetric FIR filter and a vibration-monitoring block in a compact RTL subsystem.</p><p>The project explores a digital signal path inspired by aerospace sensing: condition a stream of samples, evaluate signal magnitude, and raise an event flag when a sustained threshold condition is detected.</p><div class="scope-note"><span class="scope-icon">↗</span><span><b>Engineering scope</b> — academic RTL prototype and simulation study. Not flight hardware, not aerospace-certified equipment.</span></div></div></div>
+<div class="mission-stats reveal"><div><strong>08</strong><span>FIR TAPS</span></div><div><strong>16-bit</strong><span>SIGNED DATA PATH</span></div><div><strong>Q1.15</strong><span>COEFFICIENT FORMAT</span></div><div><strong>03 / 03</strong><span>CONSECUTIVE EVENT LOGIC</span></div></div></section>
+<section class="section system-section" id="system"><div class="section-kicker reveal"><span>02 / SIGNAL PATH</span><span class="kicker-rule"></span><span>THE SYSTEM</span></div><div class="section-heading-row reveal"><h2>A four-stage<br><em>processing chain.</em></h2><p>Each block has a defined role in the data path, from sample arrival to event indication.</p></div>
+<div class="pipeline">
+<article class="pipeline-card reveal"><div class="pipeline-head"><span>STAGE 01</span><span class="pipeline-symbol">IN</span></div><div class="pipeline-icon"><svg viewBox="0 0 64 64"><path d="M32 8v48M8 32h48M15 15l34 34M49 15 15 49" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="32" cy="32" r="15" fill="none" stroke="currentColor"/><circle cx="32" cy="32" r="4" fill="currentColor"/></svg></div><h3>Sensor input</h3><p>Signed digital sample enters the processing chain.</p><div class="pipeline-foot">SAMPLE STREAM <span>→</span></div></article>
+<div class="pipeline-connector"><span></span><b>01</b></div>
+<article class="pipeline-card pipeline-featured reveal"><div class="pipeline-head"><span>STAGE 02</span><span class="pipeline-symbol">FIR</span></div><div class="pipeline-icon"><svg viewBox="0 0 64 64"><path d="M8 50h48M12 46V18h8v28M27 46V10h8v36M42 46V24h8v22" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 17h44" stroke="currentColor" stroke-dasharray="3 4"/></svg></div><h3>8-tap FIR filter</h3><p>Symmetric coefficients condition the incoming sample stream.</p><div class="pipeline-foot">FIXED-POINT MAC <span>→</span></div></article>
+<div class="pipeline-connector"><span></span><b>02</b></div>
+<article class="pipeline-card reveal"><div class="pipeline-head"><span>STAGE 03</span><span class="pipeline-symbol">MON</span></div><div class="pipeline-icon"><svg viewBox="0 0 64 64"><path d="M8 46h48M10 34h44M10 22h44" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4"/><path d="M12 42 22 38 29 17 37 29 44 12 53 19" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="44" cy="12" r="3" fill="currentColor"/></svg></div><h3>Vibration monitor</h3><p>Magnitude, programmable threshold and hysteresis are evaluated.</p><div class="pipeline-foot">EVENT LOGIC <span>→</span></div></article>
+<div class="pipeline-connector"><span></span><b>03</b></div>
+<article class="pipeline-card reveal"><div class="pipeline-head"><span>STAGE 04</span><span class="pipeline-symbol">OUT</span></div><div class="pipeline-icon"><svg viewBox="0 0 64 64"><path d="M32 8 54 48H10L32 8Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M32 23v12M32 41v1" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div><h3>Alarm output</h3><p>Event indication follows sustained high/low sample conditions.</p><div class="pipeline-foot">STATUS FLAG <span>✓</span></div></article></div>
+<div class="architecture-footnote"><span class="tiny-dot"></span> FUNCTIONAL BLOCK-LEVEL REPRESENTATION · NOT A PHYSICAL AIRCRAFT SYSTEM</div></section>
+<section class="section lab-section" id="signal-lab"><div class="section-kicker reveal"><span>03 / INTERACTIVE EXPLORER</span><span class="kicker-rule"></span><span>SIGNAL LAB</span></div>
+<div class="lab-heading reveal"><div><h2>See what filtering<br><em>actually changes.</em></h2><p>Generate a conceptual noisy sensor signal and compare it with the output of the project's normalized 8-tap FIR coefficient set.</p></div><div class="lab-stamp">INTERACTIVE<br><b>DEMO / 01</b></div></div>
+<div class="lab-console reveal"><div class="console-bar"><div class="console-title"><span class="console-led"></span> AERODSP-X / SIGNAL VISUALIZER</div><div class="console-status">LOCAL DEMONSTRATION <span>●</span></div></div>
+<div class="console-main"><div class="plot-head"><span>INPUT / OUTPUT TRACE</span><span id="signalMode">SCENARIO: SENSOR NOISE</span></div>
+<div class="plot-wrap"><svg id="signalPlot" viewBox="0 0 900 270" role="img" aria-label="Interactive input and filtered output signal plot"><g class="plot-grid"><path d="M0 45H900M0 90H900M0 135H900M0 180H900M0 225H900M90 0V270M180 0V270M270 0V270M360 0V270M450 0V270M540 0V270M630 0V270M720 0V270M810 0V270"/></g><path id="inputPath" class="plot-input"/><path id="outputPath" class="plot-output"/></svg><div class="plot-y-label">AMPLITUDE (NORMALIZED)</div><div class="plot-x-label">SAMPLE INDEX →</div></div>
+<div class="plot-legend"><span><i class="legend-input"></i> NOISY INPUT</span><span><i class="legend-output"></i> FIR OUTPUT</span><span class="plot-hint">Illustrative browser-side calculation · not measured hardware data</span></div>
+<div class="lab-controls"><div><span class="control-label">SIGNAL SCENARIO</span><div class="scenario-buttons"><button class="scenario-btn active" data-mode="noise">NOISY SENSOR</button><button class="scenario-btn" data-mode="spike">TRANSIENT SPIKE</button><button class="scenario-btn" data-mode="clean">CLEAN SIGNAL</button></div></div><button class="button button-primary generate-btn" id="regenerate">REGENERATE ↻</button></div></div>
+<div class="console-footer"><span>COEFFICIENTS / Q1.15 NORMALIZED</span><span>117 · 1248 · 5277 · 9742 · 9742 · 5277 · 1248 · 117</span></div></div>
+<p class="lab-disclaimer">This interactive plot is a conceptual visualization calculated in your browser using the documented coefficient values. It is not a replacement for the HDL testbench or EPWave waveform evidence.</p></section>
+<section class="section specs-section" id="technology"><div class="section-kicker reveal"><span>04 / IMPLEMENTATION NOTES</span><span class="kicker-rule"></span><span>ENGINEERING DETAILS</span></div><div class="section-heading-row reveal"><h2>Designed around<br><em>the datapath.</em></h2><p>Key implementation concepts represented in the RTL project.</p></div>
+<div class="spec-grid"><article class="spec-card reveal"><span class="spec-no">A / 01</span><div class="spec-icon">Σ</div><h3>Symmetric FIR</h3><p>Eight taps with mirrored coefficient values, forming a linear-phase FIR structure.</p><code>y[n] = Σ h[k] · x[n−k]</code></article>
+<article class="spec-card reveal"><span class="spec-no">A / 02</span><div class="spec-icon">Q</div><h3>Q1.15 arithmetic</h3><p>Signed 16-bit coefficient representation, with a coefficient sum of 32768.</p><code>UNITY GAIN / 2¹⁵</code></article>
+<article class="spec-card reveal"><span class="spec-no">A / 03</span><div class="spec-icon">↗</div><h3>Event qualification</h3><p>Programmable threshold and hysteresis with consecutive-sample qualification.</p><code>3 HIGH / 3 LOW SAMPLES</code></article></div></section>
+<section class="section verification-section" id="verification"><div class="section-kicker reveal"><span>05 / FUNCTIONAL VALIDATION</span><span class="kicker-rule"></span><span>TESTBENCH RECORD</span></div>
+<div class="verification-layout"><div class="verification-copy reveal"><h2>Evidence over<br><em>assumptions.</em></h2><p>The recorded FIR testbench summary reports all 172 checks passing. This metric describes the FIR functional testbench only; it does not represent silicon validation, timing closure or aerospace qualification.</p><a class="text-link" href="https://github.com/saanyuvarma-sys/AeroDSP-X" target="_blank" rel="noopener">REVIEW PROJECT SOURCE ↗</a></div>
+<div class="verification-panel reveal"><div class="verify-top"><span>FIR / TEST SUMMARY</span><span class="verify-pass"><i></i> PASS</span></div><div class="verify-main"><div class="verify-rate">100<span>%</span></div><div class="verify-label">RECORDED PASS RATE</div><div class="verify-bar"><span></span></div><div class="verify-numbers"><div><strong>172</strong><span>TESTS RUN</span></div><div><strong>172</strong><span>PASSED</span></div><div><strong>00</strong><span>FAILED</span></div></div></div><div class="verify-bottom">SOURCE: USER-PROVIDED FIR TESTBENCH SUMMARY</div></div></div></section>
+<section class="section evidence-section" id="evidence"><div class="section-kicker reveal"><span>06 / ORIGINAL PROJECT MATERIAL</span><span class="kicker-rule"></span><span>SIMULATION EVIDENCE</span></div>
+<div class="evidence-heading reveal"><h2>The waveform<br>is the <em>receipt.</em></h2><p>Original EPWave captures from the AeroDSP-X simulation work. This is the project evidence—not a decorative mock-up.</p></div>
+<figure class="evidence-frame reveal"><div class="evidence-frame-top"><span><i class="tiny-dot"></i> ORIGINAL EPWAVE SCREENSHOTS</span><span>PROJECT FILE / PNG</span></div>
+<img src="aerodsp_simulation_evidence.png" alt="Original combined EPWave screenshots showing AeroDSP-X FIR and vibration-monitor simulation signals" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.hidden=false;">
+<div class="image-fallback" hidden><b>SIMULATION IMAGE NOT FOUND</b><span>Check that aerodsp_simulation_evidence.png remains in the repository root.</span></div>
+<figcaption><span>FIG. 02</span><span>Actual EPWave simulation evidence supplied for this project. Signal names and traces are shown as captured in the simulation environment.</span></figcaption></figure>
+<div class="evidence-tags"><span>FILTERED OUTPUT</span><span>INPUT VALID</span><span>ACCUMULATOR</span><span>THRESHOLD</span><span>HYSTERESIS</span><span>ALARM</span></div></section>
+<section class="section research-section" id="research"><div class="section-kicker reveal"><span>07 / RESEARCH TRACK</span><span class="kicker-rule"></span><span>WHAT COMES NEXT</span></div>
+<div class="research-card reveal"><div class="research-left"><span class="research-label">TECHNICAL DOSSIER / AD-X</span><h2>From implementation<br>to <em>investigation.</em></h2><p>Further work can examine synthesis quality, timing, resource utilization, verification coverage and the technical differences between this prototype and established sensor-monitoring approaches.</p><a class="button button-primary" href="https://github.com/saanyuvarma-sys/AeroDSP-X" target="_blank" rel="noopener">OPEN RESEARCH REPOSITORY ↗</a></div>
+<div class="research-right"><div class="research-row"><span>01</span><div><b>Synthesis analysis</b><small>Area, timing and power estimation</small></div><i>↗</i></div><div class="research-row"><span>02</span><div><b>Verification expansion</b><small>Corner cases and monitor coverage</small></div><i>↗</i></div><div class="research-row"><span>03</span><div><b>Prior-art investigation</b><small>Novelty review before any patent filing</small></div><i>↗</i></div><div class="research-caution">Patentability has not been established. Public disclosure can affect patent options; seek advice from a registered patent professional before making further disclosures.</div></div></div></section>
+<section class="closing-section"><div class="closing-orbit"></div><span class="closing-kicker">AERODSP-X / END OF TRANSMISSION</span><h2>Build. Verify.<br><em>Keep exploring.</em></h2><a class="button button-primary" href="https://github.com/saanyuvarma-sys/AeroDSP-X" target="_blank" rel="noopener">VISIT THE GITHUB REPOSITORY ↗</a></section>
 </main>
-
-
-<!-- FOOTER -->
-
-<footer class="footer">
-
-    <a href="#home" class="logo">
-        <span class="logo-mark">A</span>
-        AeroDSP<span class="cyan">-X</span>
-    </a>
-
-    <p>
-        Digital Signal Processing · RTL Design · Engineering Research
-    </p>
-
-    <p class="copyright">
-        © <span id="year"></span> AeroDSP-X. Technical project portfolio.
-    </p>
-
-</footer>
-
-<script src="script.js"></script>
-
-</body>
-</html>
+<footer class="footer"><a class="brand" href="#home"><span class="brand-mark small-mark">A</span><span>AERO<span class="brand-accent">DSP</span><i> / X</i></span></a><p>Independent academic RTL engineering project · Aerospace sensing concept</p><span class="footer-copy">© <span id="year"></span> AERODSP-X</span></footer>
+<script src="script.js"></script></body></html>
