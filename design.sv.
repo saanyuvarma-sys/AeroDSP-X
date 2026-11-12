@@ -1,0 +1,147 @@
+
+module aerosense_fir8 (
+    input wire clk,
+    input wire rst_n,
+    input wire signed [15:0] sample_in,
+    input wire sample_valid,
+    output reg signed [15:0] filtered_sample,
+    output reg filtered_valid
+);
+
+    reg signed [15:0] delay [0:7];
+    integer i;
+
+    reg signed [16:0] p0, p1, p2, p3;
+    reg signed [32:0] m0, m1, m2, m3;
+    reg signed [35:0] acc;
+    reg signed [35:0] scaled;
+
+    always @(*) begin
+        p0 = delay[0] + delay[7];
+        p1 = delay[1] + delay[6];
+        p2 = delay[2] + delay[5];
+        p3 = delay[3] + delay[4];
+
+        m0 = p0 * 16'sd117;
+        m1 = p1 * 16'sd1248;
+        m2 = p2 * 16'sd5277;
+        m3 = p3 * 16'sd9742;
+
+        acc = m0 + m1 + m2 + m3;
+        scaled = acc >>> 15;
+    end
+
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            for (i = 0; i < 8; i = i + 1)
+                delay[i] <= 0;
+            filtered_sample <= 0;
+            filtered_valid <= 0;
+        end else begin
+            filtered_valid <= sample_valid;
+
+            if (sample_valid) begin
+                for (i = 7; i > 0; i = i - 1)
+                    delay[i] <= delay[i-1];
+
+                delay[0] <= sample_in;
+
+                if (scaled > 32767)
+                    filtered_sample <= 32767;
+                else if (scaled < -32768)
+                    filtered_sample <= -32768;
+                else
+                    filtered_sample <= scaled[15:0];
+            end
+        end
+    end
+
+endmodule
+
+
+module aerosense_vibration_monitor (
+    input wire clk,
+    input wire rst_n,
+    input wire signed [15:0] filtered_sample,
+    input wire filtered_valid,
+    input wire [16:0] threshold,
+    input wire [16:0] hysteresis,
+    output reg alarm
+);
+
+    reg [16:0] magnitude;
+    reg [1:0] high_count;
+    reg [1:0] low_count;
+
+    always @(*) begin
+        if (filtered_sample[15])
+            magnitude = -filtered_sample;
+        else
+            magnitude = filtered_sample;
+    end
+
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            alarm <= 0;
+            high_count <= 0;
+            low_count <= 0;
+        end else if (filtered_valid) begin
+            if (!alarm) begin
+                low_count <= 0;
+                if (magnitude >= threshold) begin
+                    if (high_count == 2)
+                        alarm <= 1;
+                    else
+                        high_count <= high_count + 1'b1;
+                end else begin
+                    high_count <= 0;
+                end
+            end else begin
+                high_count <= 0;
+                if (magnitude <= (threshold - hysteresis)) begin
+                    if (low_count == 2)
+                        alarm <= 0;
+                    else
+                        low_count <= low_count + 1'b1;
+                end else begin
+                    low_count <= 0;
+                end
+            end
+        end
+    end
+
+endmodule
+
+
+module aerosense8_top (
+    input wire clk,
+    input wire rst_n,
+    input wire signed [15:0] sensor_sample,
+    input wire sample_valid,
+    input wire [16:0] threshold,
+    input wire [16:0] hysteresis,
+    output wire signed [15:0] filtered_output,
+    output wire filtered_valid,
+    output wire vibration_alarm
+);
+
+    aerosense_fir8 fir_unit (
+        .clk(clk),
+        .rst_n(rst_n),
+        .sample_in(sensor_sample),
+        .sample_valid(sample_valid),
+        .filtered_sample(filtered_output),
+        .filtered_valid(filtered_valid)
+    );
+
+    aerosense_vibration_monitor monitor_unit (
+        .clk(clk),
+        .rst_n(rst_n),
+        .filtered_sample(filtered_output),
+        .filtered_valid(filtered_valid),
+        .threshold(threshold),
+        .hysteresis(hysteresis),
+        .alarm(vibration_alarm)
+    );
+
+endmodule
