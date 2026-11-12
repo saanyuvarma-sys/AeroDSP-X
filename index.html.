@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AeroDSP-X: Fixed-point DSP RTL and aerospace-inspired vibration monitoring research project.">
+  <title>AeroDSP-X | Engineering Research Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+  <a href="#home" class="logo">AERODSP<span>-X</span></a>
+  <nav>
+    <a href="#overview">Overview</a>
+    <a href="#technology">Technology</a>
+    <a href="#architecture">Architecture</a>
+    <a href="#verification">Verification</a>
+    <a href="#research">Research</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <p class="eyebrow">ENGINEERING RESEARCH PROJECT</p>
+  <h1>Intelligent Signal Processing for Aerospace-Inspired Monitoring</h1>
+  <p class="hero-text">
+    A fixed-point digital signal processing and vibration
+    monitoring subsystem developed using Verilog RTL.
+  </p>
+  <a class="primary-button" href="#overview">Explore the Project</a>
+  <p class="status">RTL DESIGN · FUNCTIONAL VERIFICATION · LOGIC SYNTHESIS</p>
+</section>
+
+<section id="overview" class="section">
+  <p class="eyebrow">01 / PROJECT OVERVIEW</p>
+  <h2>About AeroDSP-X</h2>
+  <p>
+    AeroDSP-X explores the implementation of a digital signal
+    conditioning and vibration event detection system.
+    It combines an 8-tap symmetric FIR filter with a
+    programmable vibration monitoring subsystem.
+  </p>
+</section>
+
+<section id="technology" class="section">
+  <p class="eyebrow">02 / TECHNICAL FIELD</p>
+  <h2>Technical Background</h2>
+  <p>
+    The project relates to digital signal processing,
+    fixed-point arithmetic, RTL design, and threshold-based
+    sensor monitoring.
+  </p>
+  <div class="cards">
+    <article class="card">
+      <h3>FIR Filtering</h3>
+      <p>Eight-tap symmetric finite impulse response filtering.</p>
+    </article>
+    <article class="card">
+      <h3>Vibration Monitoring</h3>
+      <p>Threshold and hysteresis-based event detection.</p>
+    </article>
+    <article class="card">
+      <h3>RTL Integration</h3>
+      <p>Modular Verilog design and integrated verification.</p>
+    </article>
+  </div>
+</section>
+
+<section id="architecture" class="section">
+  <p class="eyebrow">03 / SYSTEM ARCHITECTURE</p>
+  <h2>Proposed System</h2>
+  <div class="architecture">
+    <div>Sensor Sample Input</div>
+    <span>↓</span>
+    <div>8-Tap FIR Filter</div>
+    <span>↓</span>
+    <div>Vibration Monitoring</div>
+    <span>↓</span>
+    <div>Alarm Output</div>
+  </div>
+</section>
+
+<section id="verification" class="section">
+  <p class="eyebrow">04 / VERIFICATION</p>
+  <h2>Functional Verification</h2>
+  <p>
+    The FIR verification testbench exercises impulse, step,
+    negative, boundary, alternating, and random input cases.
+  </p>
+  <div class="cards">
+    <article class="card">
+      <h3>172</h3>
+      <p>FIR comparisons</p>
+    </article>
+    <article class="card">
+      <h3>172</h3>
+      <p>Passed</p>
+    </article>
+    <article class="card">
+      <h3>0</h3>
+      <p>Failed</p>
+    </article>
+  </div>
+</section>
+
+<section id="research" class="section">
+  <p class="eyebrow">05 / TECHNICAL RESEARCH</p>
+  <h2>Invention Disclosure — Research Draft</h2>
+  <p>
+    This section will document the technical problem,
+    existing approaches, proposed solution, detailed
+    embodiments, and potential inventive contribution.
+  </p>
+  <p class="notice">
+    Patentability has not been established. This educational
+    project is not a certified aerospace system or a patent
+    application.
+  </p>
+</section>
+
+</main>
+
+<footer>
+  <p>AERODSP-X | Digital Design & VLSI Research</p>
+  <p>Educational engineering prototype</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
