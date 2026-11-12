@@ -1,0 +1,6 @@
+
+read_verilog -sv design.sv
+hierarchy -top aerosense8_top
+synth -top aerosense8_top
+check
+stat
